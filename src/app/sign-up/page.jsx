@@ -25,11 +25,10 @@ export default function SignUpPage() {
     });
 
     if (data) {
-      console.log(data);
       redirect("/");
     }
     if (error) {
-      console.log(error);
+      toast.error("USER_ALREADY_EXISTS_USE_ANOTHER_EMAIL");
     }
   };
 

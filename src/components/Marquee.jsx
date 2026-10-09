@@ -4,8 +4,12 @@ import MarqueeText from "react-marquee-text";
 import "react-marquee-text/dist/styles.css";
 
 async function Marquee() {
-  const res = await fetch("https://api.abcz.workers.dev/api/bazardor/products");
-  const data = await res.json();
+  const res = await fetch(
+    "https://api.api-store.workers.dev/api/bazardor/products",
+  );
+  const allData = await res.json();
+
+  const data = allData.slice(0, 15);
 
   return (
     <div className="py-2">

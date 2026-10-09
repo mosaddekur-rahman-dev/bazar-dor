@@ -3,7 +3,7 @@ import Link from "next/link";
 function SectionCard({ price }) {
   return (
     <Link href={`/product/${price.id}`}>
-      <div className=" bg-white py-5 px-5 mb-5 block rounded-2xl">
+      <div className=" bg-white py-5 px-5 mb-5 block rounded-2xl hover:border-[[#05893E]">
         <div className="flex gap-5 ">
           <div className="w-15 h-15 flex justify-start items-center">
             <div className="bg-base-200 rounded-2xl">

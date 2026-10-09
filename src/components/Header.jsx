@@ -1,6 +1,7 @@
 import { GiShoppingCart } from "react-icons/gi";
 import NavLinks from "./NavLinks";
 import Link from "next/link";
+import UserInfo from "./UserInfo";
 
 function Header() {
   const date = new Date().toLocaleDateString("bn-BD", {
@@ -22,18 +23,7 @@ function Header() {
               </div>
             </div>
           </Link>
-          <div className="flex gap-2 items-center">
-            <Link href={"/sign-in"}>
-              <button className="btn py-2 px-4 bg-white border-0">
-                সাইন ইন
-              </button>
-            </Link>
-            <Link href={"/sign-up"}>
-              <button className="btn btn-success py-2 px-4 bg-[#05893E] rounded-xl text-white">
-                সাইন আপ
-              </button>
-            </Link>
-          </div>
+          <UserInfo />
         </div>
       </div>
       <NavLinks />
