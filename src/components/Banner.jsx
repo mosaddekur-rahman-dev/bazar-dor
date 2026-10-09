@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 
 function Banner() {
   const date = new Date().toLocaleDateString("bn-BD", {
@@ -17,9 +18,11 @@ function Banner() {
           চাল, ডাল, তেল, সবজি, মাছ, মাংস, ডিম ও মসলার দাম — বাজারভিত্তিক
           বিস্তারিত, গড়, সর্বনিম্ন-সর্বাধিক এবং দামের পরিবর্তন এক জায়গায়।
         </p>
-        <button className="btn btn-success bg-[#05893E] text-white rounded-xl">
-          সব পণ্য দেখুন
-        </button>
+        <Link href={"#all"}>
+          <button className="btn btn-success bg-[#05893E] text-white rounded-xl">
+            সব পণ্য দেখুন
+          </button>
+        </Link>
       </div>
       <div>
         <Image

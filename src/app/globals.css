@@ -1,3 +1,8 @@
 @import "tailwindcss";
 @plugin "daisyui";
 @import "@heroui/styles";
+
+body {
+  scroll-behavior: smooth;
+  scroll-padding: 20px;
+}

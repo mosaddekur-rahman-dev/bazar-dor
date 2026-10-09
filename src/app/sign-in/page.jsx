@@ -11,28 +11,22 @@ import {
 import Image from "next/image";
 import Link from "next/link";
 
-export default function SignUpPage() {
+export default function SignInPage() {
   const onSubmit = (e) => {
     e.preventDefault();
     const formData = new FormData(e.currentTarget);
     const data = Object.fromEntries(formData);
-
-    formData.forEach((value, key) => {
-      data[key] = value.toString();
-    });
-
-    alert(`Form submitted with: ${JSON.stringify(data, null, 2)}`);
   };
 
   return (
     <div className="bg-base-300 pt-5 h-fit flex flex-col items-center justify-center">
       <div className="container flex gap-5 mx-auto justify-center items-center">
-        <div className="text-center flex flex-col gap-2 mb-5">
+        <div className="text-center flex flex-col gap-2 mb-2">
           <h1 className="text-2xl font-semibold">সাইন ইন</h1>
           <p>বিস্তারিত দাম, বাজার তুলনা ও প্রোফাইল দেখতে অ্যাকাউন্টে ঢুকুন।</p>
         </div>
       </div>
-      <div className="container mx-autoflex flex-col  justify-center bg-white mb-15 p-10 w-150 rounded-2xl">
+      <div className="container mx-autoflex flex-col  justify-center bg-white mb-5 p-10 w-150 rounded-2xl">
         <Form
           className="flex flex-col gap-4 justify-center"
           onSubmit={onSubmit}>
@@ -123,6 +117,11 @@ export default function SignUpPage() {
             </p>
           </div>
         </Form>
+      </div>
+      <div className="text-center mb-5">
+        <Link href={"/"}>
+          <p>← হোম পেজে ফিরে যান</p>
+        </Link>
       </div>
     </div>
   );

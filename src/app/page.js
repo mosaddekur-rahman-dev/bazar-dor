@@ -2,6 +2,7 @@ import Banner from "@/components/Banner";
 import SectionCard from "@/components/itemSection/SectionCard";
 
 import { toBanglaNumber } from "./numberConvert";
+import Link from "next/link";
 
 export default async function Home() {
   const res = await fetch("https://api.abcz.workers.dev/api/bazardor/products");
@@ -44,7 +45,7 @@ export default async function Home() {
               ))}
             </div>
           </div>
-          <div>
+          <div id="all">
             <h1 className="items-center mb-10">
               <span className="text-xl font-semibold">সব পণ্য</span>
               <p className="mt-3">

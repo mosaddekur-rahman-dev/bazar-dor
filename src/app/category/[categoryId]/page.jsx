@@ -20,7 +20,7 @@ async function CategoryItems({ params }) {
                 {data[0]?.categoryIcon}
               </span>
             </div>
-            <div className="flex flex-col mb-10 pt-5">
+            <div className="flex flex-col mb-5 pt-5">
               <span className="text-xl font-semibold">
                 {data[0]?.categoryNameBn}
               </span>

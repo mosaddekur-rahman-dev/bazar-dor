@@ -1,5 +1,6 @@
 "use client";
 
+import { authClient } from "@/lib/auth-client";
 import {
   Description,
   FieldError,
@@ -10,18 +11,26 @@ import {
 } from "@heroui/react";
 import Image from "next/image";
 import Link from "next/link";
+import { redirect } from "next/navigation";
 
 export default function SignUpPage() {
-  const onSubmit = (e) => {
+  const onSubmit = async (e) => {
     e.preventDefault();
     const formData = new FormData(e.currentTarget);
-    const data = Object.fromEntries(formData);
+    const user = Object.fromEntries(formData.entries());
 
-    formData.forEach((value, key) => {
-      data[key] = value.toString();
+    const { data, error } = await authClient.signUp.email({
+      ...user,
+      callbackURL: "/",
     });
 
-    alert(`Form submitted with: ${JSON.stringify(data, null, 2)}`);
+    if (data) {
+      console.log(data);
+      redirect("/");
+    }
+    if (error) {
+      console.log(error);
+    }
   };
 
   return (
@@ -32,7 +41,7 @@ export default function SignUpPage() {
           <p>বিনা খরচে সাইন আপ করে সব বিস্তারিত দাম দেখুন।</p>
         </div>
       </div>
-      <div className="container mx-autoflex flex-col  justify-center bg-white mb-15 p-10 w-150 rounded-2xl">
+      <div className="container mx-autoflex flex-col  justify-center bg-white mb-5 p-10 w-150 rounded-2xl">
         <Form
           className="flex flex-col gap-4 justify-center"
           onSubmit={onSubmit}>
@@ -165,6 +174,11 @@ export default function SignUpPage() {
             </p>
           </div>
         </Form>
+      </div>
+      <div className="text-center mb-5">
+        <Link href={"/"}>
+          <p>← হোম পেজে ফিরে যান</p>
+        </Link>
       </div>
     </div>
   );

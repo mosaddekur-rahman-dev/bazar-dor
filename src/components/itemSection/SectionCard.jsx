@@ -1,8 +1,8 @@
 import { toBanglaNumber } from "@/app/numberConvert";
+import Link from "next/link";
 function SectionCard({ price }) {
-  console.log(price);
   return (
-    <>
+    <Link href={`/product/${price.id}`}>
       <div className=" bg-white py-5 px-5 mb-5 block rounded-2xl">
         <div className="flex gap-5 ">
           <div className="w-15 h-15 flex justify-start items-center">
@@ -39,7 +39,7 @@ function SectionCard({ price }) {
           </p>
         </div>
       </div>
-    </>
+    </Link>
   );
 }
 
