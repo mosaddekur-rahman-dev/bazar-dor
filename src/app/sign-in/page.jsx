@@ -1,5 +1,6 @@
 "use client";
 
+import { authClient } from "@/lib/auth-client";
 import {
   Description,
   FieldError,
@@ -10,12 +11,30 @@ import {
 } from "@heroui/react";
 import Image from "next/image";
 import Link from "next/link";
+import toast from "react-hot-toast";
 
 export default function SignInPage() {
-  const onSubmit = (e) => {
+  const onSubmit = async (e) => {
     e.preventDefault();
     const formData = new FormData(e.currentTarget);
-    const data = Object.fromEntries(formData);
+    const user = Object.fromEntries(formData);
+
+    const { data, error } = await authClient.signIn.email({
+      ...user,
+      callbackURL: "/",
+    });
+    if (data) {
+      toast.success("Successfully Signed In");
+    }
+    if (error) {
+      toast.error(error.message);
+    }
+  };
+
+  const handleGoogleSignIn = async () => {
+    const data = await authClient.signIn.social({
+      provider: "google",
+    });
   };
 
   return (
@@ -87,6 +106,7 @@ export default function SignInPage() {
           <div className="flex justify-between">
             <button
               type="button"
+              onClick={handleGoogleSignIn}
               className="py-2 btn flex items-center cursor-pointer">
               <Image
                 src={"/google-logo.webp"}
@@ -110,9 +130,9 @@ export default function SignInPage() {
           </div>
           <div>
             <p className="text-center">
-              অ্যাকাউন্ট আছে?
+              অ্যাকাউন্ট নেই ?
               <Link href={"/sign-in"}>
-                <span className=" text-[#05893E]"> সাইন ইন করুন</span>
+                <span className=" text-[#05893E]"> সাইন আপ করুন</span>
               </Link>
             </p>
           </div>

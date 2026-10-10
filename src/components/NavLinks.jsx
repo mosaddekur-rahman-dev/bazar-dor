@@ -2,7 +2,7 @@ import Link from "next/link";
 
 async function NavLinks() {
   const res = await fetch(
-    "https://api.api-store.workers.dev/api/bazardor/categories",
+    "https://openapi.programming-hero.com/api/bazardor/categories",
   );
   const data = await res.json();
 
@@ -11,7 +11,7 @@ async function NavLinks() {
       <div className="container mx-auto py-2 flex gap-4">
         {data.map((dat) => (
           <Link
-            className="hover:bg-gray-200 py-1 px-2 roudned-2xl font-semibold link:active:bg-[#05893E]"
+            className={`hover:bg-gray-200 py-1 px-2 rounded-2xl font-semibold`}
             key={dat.id}
             href={`/category/${dat.slug}`}>
             {dat.icon}

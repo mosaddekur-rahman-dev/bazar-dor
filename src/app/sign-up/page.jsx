@@ -12,6 +12,7 @@ import {
 import Image from "next/image";
 import Link from "next/link";
 import { redirect } from "next/navigation";
+import toast from "react-hot-toast";
 
 export default function SignUpPage() {
   const onSubmit = async (e) => {
@@ -25,11 +26,18 @@ export default function SignUpPage() {
     });
 
     if (data) {
+      toast.success("New user created");
       redirect("/");
     }
     if (error) {
-      toast.error("USER_ALREADY_EXISTS_USE_ANOTHER_EMAIL");
+      toast.error("User already exists. Use another email");
     }
+  };
+
+  const handleGoogleSignIn = async () => {
+    const data = await authClient.signIn.social({
+      provider: "google",
+    });
   };
 
   return (
@@ -143,6 +151,7 @@ export default function SignUpPage() {
           <div className="flex justify-between">
             <button
               type="button"
+              onClick={handleGoogleSignIn}
               className="py-2 btn flex items-center cursor-pointer">
               <Image
                 src={"/google-logo.webp"}
@@ -166,9 +175,9 @@ export default function SignUpPage() {
           </div>
           <div>
             <p className="text-center">
-              অ্যাকাউন্ট নেই?
+              অ্যাকাউন্ট আছে ?
               <Link href={"/sign-in"}>
-                <span className=" text-[#05893E]"> সাইন আপ করুন</span>
+                <span className=" text-[#05893E]"> সাইন ইন করুন</span>
               </Link>
             </p>
           </div>

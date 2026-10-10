@@ -3,7 +3,7 @@ async function ProductDetailPage({ params }) {
   const { productId } = await params;
 
   const res = await fetch(
-    `https://api.api-store.workers.dev/api/bazardor/products/${productId}`,
+    `https://openapi.programming-hero.com/api/bazardor/products/${productId}`,
   );
 
   if (!res.ok) {
@@ -78,7 +78,7 @@ async function ProductDetailPage({ params }) {
               <span>
                 <span className="text-[#D03739]">
                   <span className="text-4xl font-semibold ">
-                    {toBanglaNumber(maxPrice)}
+                    {toBanglaNumber(maxPrice)}{" "}
                   </span>
                   টাকা
                 </span>
@@ -89,7 +89,7 @@ async function ProductDetailPage({ params }) {
               <span>গড় দাম</span>
               <span className="text-[#05893E]">
                 <span className="text-4xl font-semibold ">
-                  {toBanglaNumber(averagePrice)}
+                  {toBanglaNumber(averagePrice)}{" "}
                 </span>
                 টাকা
               </span>
