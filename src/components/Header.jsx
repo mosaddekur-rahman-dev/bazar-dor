@@ -1,9 +1,14 @@
+import Link from "next/link";
 import { GiShoppingCart } from "react-icons/gi";
 import NavLinks from "./NavLinks";
-import Link from "next/link";
 import UserInfo from "./UserInfo";
 
-function Header() {
+async function Header() {
+  const res = await fetch(
+    "https://openapi.programming-hero.com/api/bazardor/categories",
+  );
+  const data = await res.json();
+
   const date = new Date().toLocaleDateString("bn-BD", {
     dateStyle: "full",
   });
@@ -26,7 +31,7 @@ function Header() {
           <UserInfo />
         </div>
       </div>
-      <NavLinks />
+      <NavLinks data={data} />
     </>
   );
 }

@@ -18,7 +18,7 @@ export default function RootLayout({ children }) {
   return (
     <html
       lang="en"
-      className={`${NotoSerifBengali} h-full antialiased`}
+      className={`${NotoSerifBengali} h-full antialiased scroll-smooth`}
       data-theme="light">
       <body className="min-h-full flex flex-col">
         <Header />

@@ -37,6 +37,12 @@ export default function SignInPage() {
     });
   };
 
+  const handleGithubSignIn = async () => {
+    const data = await authClient.signIn.social({
+      provider: "github",
+    });
+  };
+
   return (
     <div className="bg-base-300 pt-5 h-fit flex flex-col items-center justify-center">
       <div className="container flex gap-5 mx-auto justify-center items-center">
@@ -118,6 +124,7 @@ export default function SignInPage() {
             </button>
             <button
               type="button"
+              onClick={handleGithubSignIn}
               className="py-2 btn flex items-center gap-2 cursor-pointer">
               <Image
                 src={"/images.png"}

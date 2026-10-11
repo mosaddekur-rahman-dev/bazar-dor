@@ -110,32 +110,6 @@ export default function SignUpPage() {
             <FieldError />
           </TextField>
 
-          <TextField
-            isRequired
-            minLength={8}
-            name="confirmPassword"
-            type="password"
-            validate={(value) => {
-              if (value.length < 8) {
-                return "Password must be at least 8 characters";
-              }
-              if (!/[A-Z]/.test(value)) {
-                return "Password must contain at least one uppercase letter";
-              }
-              if (!/[0-9]/.test(value)) {
-                return "Password must contain at least one number";
-              }
-
-              return null;
-            }}>
-            <Label>পাসওয়ার্ড নিশ্চিত করুন</Label>
-            <Input placeholder="আবার লিখুন" />
-            <Description>
-              Must be at least 8 characters with 1 uppercase and 1 number
-            </Description>
-            <FieldError />
-          </TextField>
-
           <div className="flex justify-center items-center ">
             <button
               className="btn btn-success w-full bg-[#05893E] text-white"

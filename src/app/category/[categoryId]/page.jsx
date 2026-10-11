@@ -1,12 +1,25 @@
 import { toBanglaNumber } from "@/app/numberConvert";
 import SectionCard from "@/components/itemSection/SectionCard";
-async function CategoryItems({ params }) {
+import Link from "next/link";
+async function CategoryItems({ params, searchParams }) {
   const { categoryId } = await params;
+  const { sort } = await searchParams;
 
   const res = await fetch(
     `https://openapi.programming-hero.com/api/bazardor/products?category=${categoryId}`,
   );
   const data = await res.json();
+
+  console.log(data);
+
+  const products = [...data];
+  if (sort === "asc") {
+    products.sort((a, b) => Number(a.today) - Number(b.today));
+  } else if (sort === "desc") {
+    products.sort((a, b) => Number(b.today) - Number(a.today));
+  }
+
+  const sortLabel = sort === "asc" ? "দাম: কম থেকে বেশি" : "দাম: বেশি থেকে কম";
 
   return (
     <div className="bg-base-300 pt-10 pb-10 ">
@@ -40,17 +53,25 @@ async function CategoryItems({ params }) {
               tabIndex={-1}
               className="dropdown-content menu bg-base-100 rounded-box z-1 w-52 p-2 shadow-sm">
               <li>
-                <a>দাম: কম থেকে বেশি</a>
+                <Link
+                  href="?sort=asc"
+                  className={sort === "asc" ? "menu-active" : ""}>
+                  দাম: কম থেকে বেশি
+                </Link>
               </li>
               <li>
-                <a>দাম: বেশি থেকে কম</a>
+                <Link
+                  href="?sort=desc"
+                  className={sort === "desc" ? "menu-active" : ""}>
+                  দাম: বেশি থেকে কম
+                </Link>
               </li>
             </ul>
           </div>
         </div>
       </div>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5 container mx-auto">
-        {data.map((dat) => (
+        {products.map((dat) => (
           <div key={dat.id} className="w-full">
             <SectionCard price={dat} />
           </div>

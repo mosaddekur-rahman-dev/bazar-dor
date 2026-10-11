@@ -1,15 +1,27 @@
 "use client";
 import { authClient } from "@/lib/auth-client";
+import { Spinner } from "@heroui/react";
+import Image from "next/image";
 import Link from "next/link";
 import toast from "react-hot-toast";
 
 function UserInfo() {
-  const { data: session } = authClient.useSession();
+  const { data: session, isPending } = authClient.useSession();
   const user = session?.user;
   const handleSignOut = async () => {
     await authClient.signOut();
     toast.success("Successfully signed out");
   };
+
+  if (isPending) {
+    return (
+      <div className="flex flex-col items-center gap-2">
+        <Spinner size="lg" />
+        <span className="text-xs text-muted">Loading...</span>
+      </div>
+    );
+  }
+
   console.log(user);
 
   return (
@@ -19,15 +31,17 @@ function UserInfo() {
           <div className="flex gap-2 justify-center items-center text-center">
             <div className="avatar">
               <div className="w-24">
-                <img
+                <Image
                   alt="Tailwind-CSS-Avatar-component"
-                  src="https://img.daisyui.com/images/profile/demo/batperson@192.webp"
+                  src={user?.image}
+                  width={50}
+                  height={50}
                 />
               </div>
             </div>
             <div className="dropdown">
               <div tabIndex={0} role="button" className="btn m-1 font-semibold">
-                {user.name}
+                {user?.name}
               </div>
               <ul
                 tabIndex={-1}
@@ -37,7 +51,7 @@ function UserInfo() {
                   <li className="font-semibold">{user?.email}</li>
                 </div>
                 <div className="flex flex-col gap-2 text-lg">
-                  <Link className="hover:bg-base-200" href={"/"}>
+                  <Link className="hover:bg-base-200" href={"/profile"}>
                     👤 আমার প্রোফাইল
                   </Link>
                   <Link
