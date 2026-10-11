@@ -139,7 +139,7 @@ export default function SignInPage() {
           <div>
             <p className="text-center">
               অ্যাকাউন্ট নেই ?
-              <Link href={"/sign-in"}>
+              <Link href={"/sign-up"}>
                 <span className=" text-[#05893E]"> সাইন আপ করুন</span>
               </Link>
             </p>
