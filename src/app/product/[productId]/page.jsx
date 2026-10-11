@@ -24,7 +24,7 @@ async function ProductDetailPage({ params }) {
   const averagePrice = (minPrice + maxPrice) / 2;
 
   return (
-    <div className="bg-base-200">
+    <div className="bg-base-200 px-2">
       <div className="container mx-auto">
         <div className="pt-10">
           হোম &gt; {data.categoryNameBn} &gt; {data.nameBn}{" "}

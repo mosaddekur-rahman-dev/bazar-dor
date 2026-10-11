@@ -28,7 +28,7 @@ export default async function Home() {
               <span className="text-red-600">▲</span>{" "}
               <span className="text-xl font-semibold">আজ দাম বেড়েছে</span>
             </h1>
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 mx-2">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mx-2">
               {priceUp.map((price) => (
                 <SectionCard key={price.id} price={price} />
               ))}
@@ -39,7 +39,7 @@ export default async function Home() {
               <span className="text-[#1A9951]">▼</span>{" "}
               <span className="text-xl font-semibold">আজ দাম কমেছে</span>
             </h1>
-            <div className=" grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5 mx-2">
+            <div className=" grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 mx-2">
               {priceDown.map((price) => (
                 <SectionCard key={price.id} price={price} />
               ))}
@@ -52,7 +52,7 @@ export default async function Home() {
                 মোট {toBanglaNumber(data.length)}টি পণ্য দেখানো হচ্ছে
               </p>
             </h1>
-            <div className=" grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5 mx-2">
+            <div className=" grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 mx-2">
               {data.map((price) => (
                 <SectionCard key={price.id} price={price} />
               ))}

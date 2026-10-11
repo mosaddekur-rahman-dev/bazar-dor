@@ -6,7 +6,7 @@ function Banner() {
     dateStyle: "full",
   });
   return (
-    <div className="container mx-auto bg-white p-5 rounded-3xl grid grid-cols-1 md:grid-cols-2 gap-70 mb-10">
+    <div className="container mx-auto bg-white p-3 md:p-5 rounded-3xl grid gap-5 grid-cols-1 md:grid-cols-2 md:gap-30 lg:gap-100 mb-10">
       <div>
         <h3 className="text-[#05893E] bg-base-300 inline py-1 px-3 rounded-2xl">
           {date}
@@ -24,7 +24,7 @@ function Banner() {
           </button>
         </Link>
       </div>
-      <div>
+      <div className="w-80 sm:w-100 md:w-300">
         <Image
           src="/bazar-hero.png"
           alt="Banner Image"
