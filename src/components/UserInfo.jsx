@@ -29,16 +29,6 @@ function UserInfo() {
       {user ? (
         <>
           <div className="flex gap-2 justify-center items-center text-center">
-            <div className="avatar">
-              <div className="w-24">
-                <Image
-                  alt="Tailwind-CSS-Avatar-component"
-                  src={user?.image}
-                  width={50}
-                  height={50}
-                />
-              </div>
-            </div>
             <div className="dropdown">
               <div tabIndex={0} role="button" className="btn m-1 font-semibold">
                 {user?.name}

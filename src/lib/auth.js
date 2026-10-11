@@ -2,7 +2,13 @@ import { mongodbAdapter } from "@better-auth/mongo-adapter";
 import { betterAuth } from "better-auth";
 import { MongoClient } from "mongodb";
 
-const client = new MongoClient(process.env.MONGODB_URL);
+const mongoUrl = process.env.MONGODB_URL;
+
+if (!mongoUrl) {
+  throw new Error("MONGODB_URL is not configured");
+}
+
+const client = new MongoClient(mongoUrl);
 const db = client.db("bazar-dor");
 
 export const auth = betterAuth({

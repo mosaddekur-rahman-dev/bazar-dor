@@ -1,36 +1,47 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Bazar Dor
 
-## Getting Started
+A modern, responsive web application for exploring daily market prices in Bangladesh. Bazar Dor helps users browse products by category, view detailed product information, and keep track of daily price changes through a clean and user-friendly interface.
 
-First, run the development server:
+## ✨ Features
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- **Daily Market Prices** — Browse products and their latest available market prices.
+- **Price Change Tracking** — View products with increased or decreased prices.
+- **Category-wise Browsing** — Explore products organized by category.
+- **Product Details Page** — View detailed information about individual products.
+- **Authentication** — Sign in and manage access using Better Auth.
+- **Multiple Sign-in Options**
+  - Google authentication
+  - GitHub authentication
+  - Email and password authentication
+- **Responsive Design** — Optimized for desktop, tablet, and mobile devices.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 🛠️ Tech Stack
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+| Technology                                  | Purpose                                                      |
+| ------------------------------------------- | ------------------------------------------------------------ |
+| [Next.js](https://nextjs.org/)              | React framework for building the application                 |
+| [React](https://react.dev/)                 | Component-based user interface                               |
+| [Tailwind CSS](https://tailwindcss.com/)    | Utility-first styling                                        |
+| [daisyUI](https://daisyui.com/)             | UI components built on Tailwind CSS                          |
+| [HeroUI](https://www.heroui.com/)           | UI components for interactive interfaces                     |
+| [Better Auth](https://www.better-auth.com/) | Authentication and social sign-in                            |
+| [MongoDB](https://www.mongodb.com/)         | Database integration for authentication and application data |
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 🔐 Authentication
 
-## Learn More
+Bazar Dor uses Better Auth to provide authentication through:
 
-To learn more about Next.js, take a look at the following resources:
+- **Google** — Sign in with a Google account.
+- **GitHub** — Sign in with a GitHub account.
+- **Email and Password** — Register and sign in using email credentials.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Social authentication requires the appropriate OAuth credentials and provider configuration.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## 📁 Project Highlights
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- Reusable React components for a maintainable interface.
+- Dynamic product listings and category-based navigation.
+- Dedicated product detail pages.
+- Server-side data fetching with Next.js.
+- Authentication integration with Better Auth.
+- Responsive layouts styled with Tailwind CSS and daisyUI.

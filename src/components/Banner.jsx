@@ -5,31 +5,38 @@ function Banner() {
   const date = new Date().toLocaleDateString("bn-BD", {
     dateStyle: "full",
   });
+
   return (
-    <div className="container mx-auto bg-white p-3 md:p-5 rounded-3xl grid gap-5 grid-cols-1 md:grid-cols-2 md:gap-30 lg:gap-100 mb-10">
+    <div className="mx-auto mb-10 grid w-full max-w-7xl grid-cols-1 items-center gap-6 rounded-3xl bg-white p-4 sm:p-6 md:grid-cols-2 md:gap-8 lg:gap-12">
       <div>
-        <h3 className="text-[#05893E] bg-base-300 inline py-1 px-3 rounded-2xl">
+        <h3 className="inline rounded-2xl bg-base-300 px-3 py-1 text-[#05893E]">
           {date}
         </h3>
-        <h1 className="mt-5 text-4xl font-bold mb-10">
+
+        <h1 className="mb-6 mt-5 text-3xl font-bold sm:text-4xl">
           আজকের বাজারের দাম এক নজরে
         </h1>
-        <p className="text-justify mb-15">
+
+        <p className="mb-8 text-justify leading-8">
           চাল, ডাল, তেল, সবজি, মাছ, মাংস, ডিম ও মসলার দাম — বাজারভিত্তিক
           বিস্তারিত, গড়, সর্বনিম্ন-সর্বাধিক এবং দামের পরিবর্তন এক জায়গায়।
         </p>
-        <Link href={"#all"}>
-          <button className="btn btn-success bg-[#05893E] text-white rounded-xl">
-            সব পণ্য দেখুন
-          </button>
+
+        <Link
+          href="#all"
+          className="btn rounded-xl border-0 bg-[#05893E] text-white hover:bg-[#047531]">
+          সব পণ্য দেখুন
         </Link>
       </div>
-      <div className="w-80 sm:w-100 md:w-300">
+
+      <div className="relative mx-auto w-full max-w-md">
         <Image
           src="/bazar-hero.png"
-          alt="Banner Image"
+          alt="আজকের বাজারের পণ্যের চিত্র"
           width={400}
           height={400}
+          priority
+          className="h-auto w-full object-contain"
         />
       </div>
     </div>

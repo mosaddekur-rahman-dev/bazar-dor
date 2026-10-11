@@ -22,7 +22,7 @@ export default async function Home() {
     <div>
       <div className="bg-base-300 pt-10 pb-10">
         <Banner />
-        <div className="container mx-auto">
+        <div className="mx-auto w-full max-w-7xl px-4">
           <div className="mb-15">
             <h1 className="items-center mb-5">
               <span className="text-red-600">▲</span>{" "}
