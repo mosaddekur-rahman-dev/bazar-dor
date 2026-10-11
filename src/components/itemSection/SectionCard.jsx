@@ -30,10 +30,11 @@ function SectionCard({ price }) {
           <p className="items-center">
             <span
               className={`${price.change.dir === "up" ? "text-red-600" : "text-green-700"}`}>
-              {price.change.dir === "up" ? "▲" : "▼"}{" "}
+              {price.change.dir === "up" ? "▲" : ""}{" "}
+              {price.change.dir === "down" ? "▲" : ""}{" "}
             </span>
             <span
-              className={`${price.change.dir === "up" ? "text-red-700" : "text-green-700"}`}>
+              className={`${price.change.dir === "up" ? "text-red-700" : "text-green-800"}`}>
               {toBanglaNumber(price.change.pct)}%
             </span>
           </p>

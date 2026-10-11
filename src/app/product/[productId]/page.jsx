@@ -1,4 +1,5 @@
 import { toBanglaNumber } from "@/app/numberConvert";
+import { notFound } from "next/navigation";
 async function ProductDetailPage({ params }) {
   const { productId } = await params;
 
@@ -6,9 +7,12 @@ async function ProductDetailPage({ params }) {
     `https://openapi.programming-hero.com/api/bazardor/products/${productId}`,
   );
 
-  if (!res.ok) {
+  if (!res) {
     throw new Error("Failed to fetch product details");
   }
+
+  if (res.status === 404) notFound();
+  if (!res.ok) throw new Error("Failed to fetch product details");
 
   const data = await res.json();
 
@@ -50,7 +54,8 @@ async function ProductDetailPage({ params }) {
               <span>
                 <span
                   className={`${data?.change?.dir === "up" ? "text-red-600" : "text-green-700"}`}>
-                  {data?.change?.dir === "up" ? "▲" : "▼"}{" "}
+                  {data?.change?.dir === "up" ? "▲" : ""}{" "}
+                  {data?.change?.dir === "down" ? "▼" : ""}{" "}
                 </span>
                 <span
                   className={`${data?.change?.dir === "up" ? "text-red-700" : "text-green-700"}`}>
@@ -111,90 +116,23 @@ async function ProductDetailPage({ params }) {
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                  <td>{market[0].market}</td>
-                  <td>{market[0].division}</td>
-                  <td>{market[0].min}</td>
-                  <td>{market[0].max}</td>
-                  <td>{(market[0].min + market[0].max) / 2}</td>
-                </tr>
-                <tr className="bg-base-200">
-                  <td>{market[1].market}</td>
-                  <td>{market[1].division}</td>
-                  <td>{market[1].min}</td>
-                  <td>{market[1].max}</td>
-                  <td>{(market[1].min + market[1].max) / 2}</td>
-                </tr>
-                <tr>
-                  <td>{market[2].market}</td>
-                  <td>{market[2].division}</td>
-                  <td>{market[2].min}</td>
-                  <td>{market[2].max}</td>
-                  <td>{(market[2].min + market[2].max) / 2}</td>
-                </tr>
-                <tr className="bg-base-200">
-                  <td>{market[3].market}</td>
-                  <td>{market[3].division}</td>
-                  <td>{market[3].min}</td>
-                  <td>{market[3].max}</td>
-                  <td>{(market[3].min + market[3].max) / 2}</td>
-                </tr>
-                <tr>
-                  <td>{market[4].market}</td>
-                  <td>{market[4].division}</td>
-                  <td>{market[4].min}</td>
-                  <td>{market[4].max}</td>
-                  <td>{(market[4].min + market[4].max) / 2}</td>
-                </tr>
-                <tr className="bg-base-200">
-                  <td>{market[5].market}</td>
-                  <td>{market[5].division}</td>
-                  <td>{market[5].min}</td>
-                  <td>{market[5].max}</td>
-                  <td>{(market[5].min + market[5].max) / 2}</td>
-                </tr>
-                <tr>
-                  <td>{market[6].market}</td>
-                  <td>{market[6].division}</td>
-                  <td>{market[6].min}</td>
-                  <td>{market[6].max}</td>
-                  <td>{(market[6].min + market[6].max) / 2}</td>
-                </tr>
-                <tr className="bg-base-200">
-                  <td>{market[7].market}</td>
-                  <td>{market[7].division}</td>
-                  <td>{market[7].min}</td>
-                  <td>{market[7].max}</td>
-                  <td>{(market[7].min + market[7].max) / 2}</td>
-                </tr>
-                <tr>
-                  <td>{market[8].market}</td>
-                  <td>{market[8].division}</td>
-                  <td>{market[8].min}</td>
-                  <td>{market[8].max}</td>
-                  <td>{(market[8].min + market[8].max) / 2}</td>
-                </tr>
-                <tr className="bg-base-200">
-                  <td>{market[9].market}</td>
-                  <td>{market[9].division}</td>
-                  <td>{market[9].min}</td>
-                  <td>{market[9].max}</td>
-                  <td>{(market[9].min + market[9].max) / 2}</td>
-                </tr>
-                <tr>
-                  <td>{market[10].market}</td>
-                  <td>{market[10].division}</td>
-                  <td>{market[10].min}</td>
-                  <td>{market[10].max}</td>
-                  <td>{(market[10].min + market[10].max) / 2}</td>
-                </tr>
-                <tr className="bg-base-200">
-                  <td>{market[11].market}</td>
-                  <td>{market[11].division}</td>
-                  <td>{market[11].min}</td>
-                  <td>{market[11].max}</td>
-                  <td>{(market[11].min + market[11].max) / 2}</td>
-                </tr>
+                {market.length === 0 ? (
+                  <tr>
+                    <td colSpan={5} className="text-center">
+                      কোনো বাজারের তথ্য পাওয়া যায়নি
+                    </td>
+                  </tr>
+                ) : (
+                  market.map((m) => (
+                    <tr key={m.market}>
+                      <td>{m.market}</td>
+                      <td>{m.division}</td>
+                      <td>{toBanglaNumber(m.min)}</td>
+                      <td>{toBanglaNumber(m.max)}</td>
+                      <td>{toBanglaNumber(Math.round((m.min + m.max) / 2))}</td>
+                    </tr>
+                  ))
+                )}
               </tbody>
             </table>
           </div>

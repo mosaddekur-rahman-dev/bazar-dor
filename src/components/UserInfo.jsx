@@ -54,11 +54,12 @@ function UserInfo() {
                   <Link className="hover:bg-base-200" href={"/profile"}>
                     👤 আমার প্রোফাইল
                   </Link>
-                  <Link
-                    className="hover:bg-base-200 text-red-700"
-                    href={"/"}
-                    onClick={handleSignOut}>
-                    সাইন আউট
+                  <Link href={"/"} className="hover:bg-base-200">
+                    <button
+                      className=" text-red-700 cursor-pointer"
+                      onClick={handleSignOut}>
+                      সাইন আউট
+                    </button>
                   </Link>
                 </div>
               </ul>

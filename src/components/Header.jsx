@@ -14,8 +14,8 @@ async function Header() {
   });
 
   return (
-    <>
-      <div className="container mx-auto pt-5 flex flex-col gap-3 mb-5 ">
+    <div className=" bg-white sticky top-0 z-1">
+      <div className="container mx-auto pt-5 flex flex-col gap-3 mb-5">
         <div className="flex justify-between">
           <Link href={"/"}>
             <div id="headerLogo" className="flex gap-2 items-center">
@@ -32,7 +32,7 @@ async function Header() {
         </div>
       </div>
       <NavLinks data={data} />
-    </>
+    </div>
   );
 }
 

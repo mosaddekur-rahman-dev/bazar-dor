@@ -12,7 +12,7 @@ async function Marquee() {
   const data = allData.slice(0, 15);
 
   return (
-    <div className="py-2">
+    <div className="py-2 bg-white">
       <MarqueeText direction="right" duration={10}>
         {data.map((dat) => (
           <Link key={dat.id} href={`/product/${dat.id}`}>

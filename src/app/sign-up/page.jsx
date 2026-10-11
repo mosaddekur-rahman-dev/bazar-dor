@@ -41,19 +41,20 @@ export default function SignUpPage() {
   };
 
   return (
-    <div className="bg-base-300 pt-5 h-fit flex flex-col items-center justify-center">
+    <div className="bg-base-300 pt-10 h-fit flex flex-col items-center justify-center">
       <div className="container flex gap-5 mx-auto justify-center items-center">
         <div className="text-center flex flex-col gap-2 mb-5">
           <h1 className="text-2xl font-semibold">অ্যাকাউন্ট তৈরি করুন</h1>
           <p>বিনা খরচে সাইন আপ করে সব বিস্তারিত দাম দেখুন।</p>
         </div>
       </div>
-      <div className="container mx-autoflex flex-col  justify-center bg-white mb-5 p-10 w-150 rounded-2xl">
+      <div className="container mx-autoflex flex-col  justify-center bg-white mb-5 p-10 w-140 rounded-2xl">
         <Form
-          className="flex flex-col gap-4 justify-center"
+          className="flex flex-col gap-4 justify-center w-full"
           onSubmit={onSubmit}>
           <TextField
             isRequired
+            className="w-full"
             name="name"
             type="text"
             validate={(value) => {
@@ -64,7 +65,7 @@ export default function SignUpPage() {
               return null;
             }}>
             <Label>নাম</Label>
-            <Input placeholder="যেমন: রহিম উদ্দিন" />
+            <Input className="w-full" placeholder="যেমন: রহিম উদ্দিন" />
             <FieldError />
           </TextField>
 
@@ -72,6 +73,7 @@ export default function SignUpPage() {
             isRequired
             name="email"
             type="email"
+            className="w-full"
             validate={(value) => {
               if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(value)) {
                 return "Please enter a valid email address";
@@ -80,7 +82,7 @@ export default function SignUpPage() {
               return null;
             }}>
             <Label>ইমেইল</Label>
-            <Input placeholder="you@example.com" />
+            <Input className="w-full" placeholder="you@example.com" />
             <FieldError />
           </TextField>
 
@@ -89,6 +91,7 @@ export default function SignUpPage() {
             minLength={8}
             name="password"
             type="password"
+            className="w-full"
             validate={(value) => {
               if (value.length < 8) {
                 return "Password must be at least 8 characters";
@@ -103,7 +106,7 @@ export default function SignUpPage() {
               return null;
             }}>
             <Label>পাসওয়ার্ড</Label>
-            <Input placeholder="কমপক্ষে ৮ অক্ষর" />
+            <Input className="w-full" placeholder="কমপক্ষে ৮ অক্ষর" />
             <Description>
               Must be at least 8 characters with 1 uppercase and 1 number
             </Description>

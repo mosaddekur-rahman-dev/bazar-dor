@@ -1,6 +1,7 @@
 import { toBanglaNumber } from "@/app/numberConvert";
 import SectionCard from "@/components/itemSection/SectionCard";
 import Link from "next/link";
+import { notFound } from "next/navigation";
 async function CategoryItems({ params, searchParams }) {
   const { categoryId } = await params;
   const { sort } = await searchParams;
@@ -8,9 +9,16 @@ async function CategoryItems({ params, searchParams }) {
   const res = await fetch(
     `https://openapi.programming-hero.com/api/bazardor/products?category=${categoryId}`,
   );
+
+  if (res.status === 404) notFound();
+  if (!res.ok) throw new Error("Failed to fetch products");
+
   const data = await res.json();
 
-  console.log(data);
+  if (!Array.isArray(data) || data.length === 0) notFound();
+
+  if (!res.status) notFound();
+  if (!res.ok) throw new Error("Failed to fetch product details");
 
   const products = [...data];
   if (sort === "asc") {

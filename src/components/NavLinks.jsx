@@ -15,7 +15,7 @@ function NavLinks({ data }) {
             <Link
               href={href}
               className={`py-1 px-2 rounded-2xl font-semibold transition-colors ${
-                isActive ? "bg-gray-300" : "hover:bg-gray-200"
+                isActive ? "bg-[#05893E] text-white" : "hover:bg-gray-100"
               }`}
               key={dat.id}>
               {dat.icon}
